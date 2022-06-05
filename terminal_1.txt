@@ -1,0 +1,98 @@
+1) Посмотреть где я - pwd
+
+Чтобы сделать домашку, я перешла на диск D в нужную мне папку cd /mdt/d/QA/VK/practice
+и далее пошла с помощью команды cd в нужную папку
+
+2) Создать папку - mkdir one_homework
+3) Зайти в папку - cd one_homework
+4) Создать 3 папки - mkdir one two three
+5) Зайти в любоую папку - cd one
+6) Создать 5 файлов (3 txt, 2 json) - touch 1.txt 2.txt 3.txt 4.json 5.json
+7) Создать 3 папки - mkdir 1s 2s
+8) Вывести список содержимого папки - ls
+9) + Открыть любой txt файл - nano 1.txt
+10) + написать туда что-нибудь, любой текст. - 
+*Who I am?
+I am a human!*
+
+11) + сохранить и выйти. - F2 нажать Y 
+12) Выйти из папки на уровень выше - cd ..
+—
+13) переместить любые 2 файла, которые вы создали, в любую другую папку. - 
+mv one/1.txt two/1.txt
+mv one/4.json two/4.json
+
+14) скопировать любые 2 файла, которые вы создали, в любую другую папку.
+cp two/1.txt three/1.txt
+cp two/4.json three/4.json
+
+15) Найти файл по имени
+find / -name "3.txt"
+нашел /mnt/d/QA/VK/practice/one_homework/one/3.txt нажала cntrl+C чтобы остановить команду
+find . -name "3.txt" тут будет поиск в папке one
+./one_homework/one/3.txt
+
+16) просмотреть содержимое в реальном времени (команда grep) изучите как она работает.
+tail -f grep two/1.txt
+Вывелось:
+tail: cannot open 'grep' for reading: No such file or directory
+==> two/1.txt <==
+Who I am?
+I am a human!
+
+17) вывести несколько первых строк из текстового файла
+head -n 1 two/1.txt
+Вывелось:
+head: cannot open 'grep' for reading: No such file or directory
+==> two/1.txt <==
+Who I am?
+
+18) вывести несколько последних строк из текстового файла
+tail -n 1 two/1.txt
+Вывелось:
+tail: cannot open 'grep' for reading: No such file or directory
+==> two/1.txt <==
+I am a human!
+
+19) просмотреть содержимое длинного файла (команда less) изучите как она работает.
+less 1_homework.txt
+
+20) вывести дату и время
+date
+Sun May 22 13:01:04 MSK 2022
+=========
+
+Задание *
+1) Отправить http запрос на сервер.
+http://162.55.220.72:5005/terminal-hw-request
+curl http://162.55.220.72:5005/terminal-hw-request
+Вывелось:
+{
+  "Intro": "Hello!! This is your the first response from server",
+  "Tasks": {
+    "Task_1": "Send the next URL in terminal: http://162.55.220.72:5005/get_method?name=(set_your_String)&age=(set_your_number)",
+    "result": [
+      "Your_String",
+      "Your_number"
+    ]
+  }
+}
+curl curl "http://162.55.220.72:5005/get_method?name=(Olesia)&age=(29)"
+
+[
+  "(Olesia)",
+  "(29)"
+]
+
+2) Написать скрипт который выполнит автоматически пункты 3, 4, 5, 6, 7, 8, 13
+
+#!/bin/bash
+cd /mnt/d/QA/VK/practice
+cd one_homework
+mkdir 1one 2two 3three
+cd 1one
+touch 11.txt 22.txt 33.txt 44.json 55.json
+mkdir 1ss 2ss
+ls
+mv 11.txt /mnt/d/QA/VK/practice/one_homework/2two/11.txt
+mv 44.json /mnt/d/QA/VK/practice/one_homework/2two/44.json
